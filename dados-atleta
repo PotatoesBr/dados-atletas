@@ -1,0 +1,129 @@
+class Atleta {
+    
+    constructor(
+        nome,idade,peso,altura,notas
+    ){
+    this.nome = nome;
+    this.idade = idade;
+    this.peso = peso;
+    this.altura = altura;
+    this.notas = notas;
+
+    };
+    
+    Categoria()
+    {
+       return this.calculaCategoria();
+    };
+    
+    calculaCategoria()
+    {
+      this.categoria = ``;
+      
+   if(
+   this.idade >= 9 && this.idade <= 11
+   )
+      {
+       this.categoria = `Infantil`  
+      }
+      else if(
+    this.idade > 11 && this.idade <= 13
+    )
+      {
+       this.categoria = `Juvenil`
+      }
+      else if(this.idade > 13 && this.idade <= 16)
+      {
+       this.categoria = `Intermediario`
+      }
+      else if(
+    this.idade > 16 && this.idade <= 30 )
+      {
+       this.categoria = `Adulto`
+      }
+      else
+      { 
+       this.categoria = `Sem Categoria`
+      };
+      return this.categoria;
+    };
+    
+    
+    calculaIMC()
+    {
+        
+    this.IMC = 0;
+    this.IMC = Math.pow(this.altura,2);
+    this.IMC = this.peso / this.IMC;
+    return this.IMC ;
+        
+    };
+    
+    
+    
+    calculaMediaValida(){
+        
+    this.ordem = this.notas.sort(
+       (a, b) => a - b
+    );
+    
+    this.ordem = this.ordem.slice(
+    1,this.ordem.length -1);
+    
+    let medias = 0;
+    
+   this.ordem.forEach(
+    function(media)
+    {
+    medias = medias + media
+    });
+    medias =
+    medias/this.ordem.length;
+    
+    this.medias = medias;
+
+   return this.medias;
+    };
+    
+    obtemNomeAtleta(){
+ return`Nome do Atleta: ${this.nome}`;
+    };
+    
+    obtemIdadeAtleta(){
+ return `Idade: ${this.idade} Anos`;
+    };
+    
+    obtemPesoAtleta(){
+ return `Peso: ${this.peso}KG`;       
+    };
+    
+    obtemNotasAtleta(){
+let mostraNota = this.notas.join(', ');
+ return`Notas: ${mostraNota}`;
+    };
+    
+    obtemCategoria(){
+return`Categoria: ${this.Categoria()}`;
+    };
+    
+    obtemIMC(){
+return`IMC: ${this.calculaIMC()}`;
+    };
+    
+    obtemMediaValida(){
+return `Media: ${this.calculaMediaValida()}`;
+    };
+    
+}
+const atleta = new Atleta("Cesar Abascal",
+    30, 80, 1.70,
+    [10, 9.34, 8.42, 10, 7.88]);
+    
+console.log(atleta);
+console.log(atleta.obtemNomeAtleta());
+console.log(atleta.obtemIdadeAtleta())
+console.log(atleta.obtemPesoAtleta());
+console.log(atleta.obtemNotasAtleta());
+console.log(atleta.obtemCategoria());
+console.log(atleta.obtemIMC());
+console.log(atleta.obtemMediaValida());
